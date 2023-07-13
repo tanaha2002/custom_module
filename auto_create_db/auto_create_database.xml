@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="create_database_success" name="Create Database Success">
+
+            <div class="oe_structure oe_empty">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h1>Create Database Success</h1>
+                    </div>
+                </div>
+            </div>
+
+        </template>
+    </data>
+</odoo>

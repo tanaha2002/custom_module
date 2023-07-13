@@ -1,0 +1,53 @@
+<odoo>
+        <template id="signup_fields" name="Sign Up Fields For New Database">
+
+            <div class="mb-3 field-login">
+                <div class="row">
+                    <div class="col">
+                        <label for="email">Your Email</label>
+                        <input type="text" name="email" t-att-value="email" id="email" class="form-control form-control-sm" autofocus="autofocus"
+                            autocapitalize="off" required="required" />
+                    </div>
+                    <div class="col">
+                        <label for="name">Your Name</label>
+                        <input type="text" name="name" t-att-value="name" id="name" class="form-control form-control-sm" placeholder=""
+                            required="required"  />
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3 field-company pt-2">
+                <label for="company">Your Company Name</label>
+                <input type="text" name="company" t-att-value="company" id="company" class="form-control form-control-sm"
+                    required="required" />
+            </div>
+            <div class="mb-3 field-password pt-2">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" class="form-control form-control-sm"
+                    required="required" />
+            </div>
+
+            <div class="mb-3 field-confirm_password">
+                <label for="confirm_password">Confirm Password</label>
+                <input type="password" name="confirm_password" id="confirm_password" class="form-control form-control-sm" required="required"/>
+            </div>
+        </template>
+    <template id="signup" name="Sign Upp New Database">
+        <t t-call="web.login_layout">
+            <form action="/addDatabase" class="oe_signup_form" role="form" method="post" t-if="not message"  style="max-width: 460px;">
+                <t t-call="registry_account.signup_fields">                      
+                </t>
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                <div class="text-center oe_login_buttons d-grid pt-36" style="margin: 0px 50px;">
+                    <button type="submit" class="btn btn-primary"> Sign up</button>
+                    <a href="/web/login?" class="btn btn-link btn-sm" role="button">Already have an account?</a>
+                    <div class="o_login_auth"/>
+                </div>
+            </form>
+        </t>
+    </template>
+</odoo>
+
+
+
+
