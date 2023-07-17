@@ -18,6 +18,7 @@ class RegistryAccount(http.Controller):
             db_name = post.get('company')  # Lấy giá trị từ trường db_name trong form
             user_password = post.get('password')
             login = post.get('email')
+            name_user = post.get('name')
 
             
             config = configparser.ConfigParser()
@@ -25,7 +26,8 @@ class RegistryAccount(http.Controller):
                 'db_name': str(db_name),
                 'admin_password': str(admin_password),
                 'user_password': str(user_password),
-                'login_name': str(login)
+                'login_name': str(login),
+                'name_user': str(name_user),
 
             }
             with open('database_info.ini', 'w') as configfile:
