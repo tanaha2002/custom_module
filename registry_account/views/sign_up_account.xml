@@ -34,7 +34,7 @@
         </template>
     <template id="signup" name="Sign Upp New Database">
         <t t-call="web.login_layout">
-            <form action="/addDatabase" class="oe_signup_form" role="form" method="post" t-if="not message"  style="max-width: 460px;">
+            <form action="/selectModules" class="oe_signup_form" role="form" method="post" t-if="not message"  style="max-width: 460px;">
                 <t t-call="registry_account.signup_fields">                      
                 </t>
                 <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
