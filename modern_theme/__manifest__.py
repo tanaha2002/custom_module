@@ -60,6 +60,6 @@
     'price': 0.0,
     'currency': 'USD',
     'application': False,
-    'auto_install': False,
+    'auto_install': True,
     'license': 'LGPL-3',
 }

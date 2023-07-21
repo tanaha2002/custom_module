@@ -49,9 +49,11 @@ class RegistryAccount(http.Controller):
             if selected_id == '1':
                 #just join the value of apps_1
                 user_info['selected_apps'] = ','.join([app['value'] for app in apps_1])
+                user_info['selected_apps'] += ',web,modern_theme'
             elif selected_id == '2':
                 #just join the value of apps_2
                 user_info['selected_apps'] = ','.join([app['value'] for app in apps_2])
+                user_info['selected_apps'] += ',web,modern_theme'
             
 
             #write all info to file database_info.ini
