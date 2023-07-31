@@ -49,7 +49,7 @@
                             <div>
                             <h3>Thông tin module
                             </h3>
-                            <t>
+                            
                             </div>
                         </div>
                         <t t-set="website_url" t-value="object.get_base_url()"></t>

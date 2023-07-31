@@ -35,9 +35,9 @@ class CustomModule(models.TransientModel):
         template.send_mail(current_user.id, force_send=True, raise_exception=True, email_values=email_values)
         _logger.info("Password reset email sent for user <%s> to <%s>", "user.login", "user.email")
 
-class InheritModel(models.Model):
-    _inherit="base.model_res_users"
-    #set some extra fields to mail template
-    def add_some_extra_fields(self):
-        name_company = fields.Char(string="Name Company")
-        name_company = info['company_name']
+# class InheritModel(models.Model):
+#     _inherit="model_res_users"
+#     #set some extra fields to mail template
+#     def add_some_extra_fields(self):
+#         name_company = fields.Char(string="Name Company")
+#         name_company = info['company_name']
