@@ -23,7 +23,8 @@
     #         'registry_account/static/src/css/select_apps.css',
     #     ]
     # },
-    'qweb': ['static/src/xml/select_apps_assets.xml'],
+    'qweb': ['static/src/xml/select_apps_assets.xml',
+             'static/src/xml/sign_up_assets.xml',],
     'installable': True,
 
 

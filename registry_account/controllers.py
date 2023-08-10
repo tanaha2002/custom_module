@@ -5,6 +5,7 @@ import sys
 import configparser
 import os
 from odoo.http import request
+import erppeek
 #list of apps
 apps_1 = [
     {'name': 'CRM', 'value': 'crm','icon':'registry_account/static/src/images/CRM.png'},
@@ -67,20 +68,23 @@ class RegistryAccount(http.Controller):
                 'selected_apps': user_info['selected_apps']
 
             }
+            if self.check_db_exist(user_info['db_name']):
+                # Hiển thị pop-up thông báo
+                alert_message = "Tên database đã tồn tại. Hãy chọn một tên khác."
+                return """
+                    <script>
+                        alert('%s');
+                        window.location.href = '/registryAccount';
+                    </script>
+                """ % alert_message
+            else:
             # custom_module_path = os.path.dirname(__file__)
             # config_file_path = os.path.join(custom_module_path, 'database_info.ini')
-
-            
-            
-            with open('database_info.ini', 'w') as configfile:
-                config.write(configfile)
-
-            # Thực thi file create_database.py
-            subprocess.check_output([sys.executable, 'odoo/custom_addons/registry_account/create_database.py'])
-            
-
-
-            return request.redirect('/web/login?%s')
+                with open('database_info.ini', 'w') as configfile:
+                    config.write(configfile)
+                # Thực thi file create_database.py
+                subprocess.check_output([sys.executable, 'odoo/custom_addons/registry_account/create_database.py'])
+                return request.redirect('/web/login?%s')
             # return request.redirect('/selectModules')
         except subprocess.CalledProcessError as e:
             return f"Error creating database: {e.output}"
@@ -93,13 +97,22 @@ class RegistryAccount(http.Controller):
             user_info['user_password'] = post.get('password')
             user_info['login_name'] = post.get('email')
             user_info['name_user'] = post.get('name')
-
+            print(self.check_db_exist(user_info['db_name']))
             
-            # return request.redirect('/addDatabase')
+            # Chuyển hướng đến trang chọn ứng dụng
             return request.render('registry_account.select_apps', {'apps_1': apps_1, 'apps_2': apps_2})
         except subprocess.CalledProcessError as e:
             return f"Error creating database: {e.output}"
-
+        
+    def check_db_exist(self, db_name):
+        url = 'http://localhost:8069'
+        client = erppeek.Client(server=url)
+        db_list = client.db.list()
+        print(db_list)
+        if db_name in db_list:
+            return True
+        return False
+    
 
 
 

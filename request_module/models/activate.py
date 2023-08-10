@@ -33,7 +33,7 @@ class CustomModule(models.TransientModel):
             
        
         template.send_mail(current_user.id, force_send=True, raise_exception=True, email_values=email_values)
-        _logger.info("Password reset email sent for user <%s> to <%s>", "user.login", "user.email")
+        _logger.info("activate email sent for user <%s> to <%s>", "user.login", "user.email")
 
 # class InheritModel(models.Model):
 #     _inherit="model_res_users"

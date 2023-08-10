@@ -1,6 +1,7 @@
 import erppeek
 import configparser
 import os
+import time
 url = 'http://localhost:8069'
 
 # # Đọc thông tin từ tệp
@@ -31,9 +32,10 @@ def install_modules(client, selected_apps):
         if module:
             module_obj.button_immediate_install(module[0])
 
+time.sleep(5)
 install_modules(client, selected_apps)
 
-
+time.sleep(5)
 #sửa đổi tên user
 user = client.model('res.users').search([('login', '=', login)])
 client.model('res.users').write(user, {'name': name_user})
