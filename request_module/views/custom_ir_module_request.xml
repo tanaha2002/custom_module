@@ -1,0 +1,14 @@
+<odoo>
+    <data>
+        <!-- Kế thừa từ external ID base.module_view_kanban -->
+        <record id="custom_installed_2" model="ir.ui.view">
+            <field name="name">custom.module.request.form</field>
+            <field name="model">ir.module.module</field>
+            <field name="inherit_id" ref="base_install_request.ir_module_module_view_kanban"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_open_install_request']" position="replace">
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
