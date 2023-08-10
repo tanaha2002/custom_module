@@ -19,7 +19,7 @@
         <td align="center" style="min-width: 590px;">
             <table border="0" cellpadding="0" cellspacing="0" width="590" style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
                 <tr><td valign="middle">
-                    <span style="font-size: 10px;">Xin chào</span><br/>
+                    <span style="font-size: 10px;">Mail được gửi từ user</span><br/>
                     <span style="font-size: 20px; font-weight: bold;">
                         <t t-out="object.name or ''"></t>
                     </span>
@@ -41,7 +41,7 @@
             <table border="0" cellpadding="0" cellspacing="0" width="590" style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
                 <tr><td valign="top" style="font-size: 13px;">
                     <div>
-                        Chào Admin<t>Nguyễn Dương Thanh Dự</t>,<br /><br />
+                        Chào Admin<t>BBSW</t>,<br /><br />
                         Đây là mail yêu cầu activate module từ công ty <t t-out= "object.company_name"></t>.
                         <div style="margin: 16px 0px 16px 0px;">
                             <a t-att-href="object.name"

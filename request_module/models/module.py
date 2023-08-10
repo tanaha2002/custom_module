@@ -90,20 +90,18 @@ class CustomModule(models.Model):
 
 
     def send_messenger(self):
-        dbA = Client('http://localhost:8069', 'regisssss', 'admin1', 'admin')
-        print("success 00")
-        # Tạo người dùng tạm thời trong cơ sở dữ liệu A
-        #get current user login in odoo
-
+        client = Client(f"http://localhost:8069")
+        list_db = client.db.list()
+        dbA = Client('http://localhost:8069', list_db[0], 'admin1', 'admin')
+       
         current_user = self.env.user
-        print("success")
+        
 
         # Gửi tin nhắn đến kênh "Discuss"
         # channel_id = dbA.env['mail.channel'].search([('name', '=', 'general')], limit=1)
         channel_model = dbA.model('mail.channel')
         channel_id = channel_model.search([('name', '=', 'general')], limit=1)
-        print("channel_id = ", channel_id )
-        print("success 2222")
+
         if channel_id:
             message_data = {
                 'model': 'mail.channel',
