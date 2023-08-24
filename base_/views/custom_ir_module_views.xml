@@ -1,0 +1,17 @@
+<odoo>
+    <data>
+        <!-- Kế thừa từ external ID base.module_view_kanban -->
+        <record id="custom_installed" model="ir.ui.view">
+            <field name="name">custom.module.form</field>
+            
+            <field name="model">ir.module.module</field>
+            <field name="inherit_id" ref="base.module_view_kanban"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='button_immediate_install']" position="replace">
+                    <button type="object" class="btn btn-primary btn-sm" name="open_custom_module"  states="uninstalled">Request Access</button>
+                    <!-- <button name="open_custom_module" string="Custom Action" type="object" class="oe_highlight"/> -->
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
