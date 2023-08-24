@@ -1,0 +1,117 @@
+<odoo>
+        <template id="signup_fields" name="Sign Up Fields For New Database">
+            <t t-extend="web.assets_backend">
+                <t t-append="head">
+                    <link rel="stylesheet" type="text/css" href="/registry_account/static/src/css/sign_up.css"/>
+                </t>
+            </t>
+            <!-- <div class="mb-3 field-login">
+                <div class="row">
+                    <div class="col">
+                        <label for="email">Your Email</label>
+                        <input type="text" name="email" t-att-value="email" id="email" class="form-control form-control-sm" autofocus="autofocus"
+                            autocapitalize="off" required="required" />
+                    </div>
+                    <div class="col">
+                        <label for="name">Your Name</label>
+                        <input type="text" name="name" t-att-value="name" id="name" class="form-control form-control-sm" placeholder=""
+                            required="required"  />
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3 field-company pt-2">
+                <label for="company">Your Company Name</label>
+                <input type="text" name="company" t-att-value="company" id="company" class="form-control form-control-sm"
+                    required="required" />
+            </div>
+            <div class="mb-3 field-company pt-2">
+                <label for="phonenumber">Phone Number</label>
+                <input type="text" name="phonenumber" id="phonenumber" class="form-control form-control-sm" />
+            </div>
+            <div class="mb-3 field-password pt-2">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" class="form-control form-control-sm"
+                    required="required" />
+            </div>
+
+            <div class="mb-3 field-confirm_password">
+                <label for="confirm_password">Confirm Password</label>
+                <input type="password" name="confirm_password" id="confirm_password" class="form-control form-control-sm" required="required"/>
+            </div>
+            <div class="mb-3 field-employee pt-2">
+                <label for="employee">Quy mô công ty</label>
+                <select name="employee" id="employee" class="form-control form-control-sm" required="required">
+                    <option value="10">10 nhân viên</option>
+                    <option value="50">50 nhân viên</option>
+                    <option value="100">100 nhân viên</option>
+                </select>
+            </div> -->
+                <!-- <div class="col-xl-6">
+                    <div class="col-12 py-2 field-company-size">
+                        <label class="select-label form-label">Company size</label>
+                        <select name="company_size" required="required" tabindex="6">
+                            <option selected="selected" disabled="disabled" hidden="hidden" value=""></option>
+                            <option value="1-5">&lt; 5 employees</option>
+                            <option value="5-20">5 - 20 employees</option>
+                            <option value="20-50">20 - 50 employees</option>
+                            <option value="50-250">50 - 250 employees</option>
+                            <option value="250-over">&gt; 250 employees</option>
+                        </select>
+                    </div>
+                </div> -->
+            
+        <label class="col-one-half">
+			<span class="label-text">Company Name</span>
+			<input type="text" name="company" autocomplete="off"/>
+		</label>
+		<label class="col-one-half">
+			<span class="label-text">Phone Number</span>
+			<input type="text" name="phonenumber" autocomplete="off"/>
+		</label>
+        <label>
+			<span class="label-text">First and Last Name</span>
+			<input type="text" name="name" autocomplete="off"/>
+		</label>
+		<label>
+			<span class="label-text">Email</span>
+			<input type="text" name="email" autocomplete="off"/>
+		</label>
+		<label class="password">
+			<span class="label-text">Password</span>
+			<button class="toggle-visibility" title="toggle password visibility" tabindex="-1">
+				<span class="glyphicon glyphicon-eye-close"></span>
+			</button>
+			<input type="password" name="password" autocomplete="off"/>
+		</label>
+        
+		<label>
+			<span class="label-text">Company Size</span>
+			<select name="company_size" required="required" tabindex="6" style="width: 100%;font-size: 16px;font-family: 'FontAwesome';padding: 5px;">
+                <option selected="selected" disabled="disabled" hidden="hidden" value=""></option>
+                <option value="5-20">5 - 20 employees</option>
+                <option value="20-50">20 - 50 employees</option>
+                <option value="50-250">50 - 250 employees</option>
+                
+            </select>
+		</label>
+        </template>
+    <template id="signup" name="Sign Upp New Database">
+        <t t-call="web.login_layout">
+            <form action="/selectModules" class="oe_signup_form" role="form" method="post" t-if="not message"  style="max-width: 460px;">
+                <t t-call="registry_account.signup_fields">                      
+                </t>
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                <div class="text-center oe_login_buttons d-grid pt-36" style="margin: 0px 50px;">
+                    <button type="submit" class="btn btn-primary"> Sign up</button>
+                    <a href="/web/login?" class="btn btn-link btn-sm" role="button">Already have an account?</a>
+                    <div class="o_login_auth"/>
+                </div>
+            </form>
+        </t>
+    </template>
+</odoo>
+
+
+
+

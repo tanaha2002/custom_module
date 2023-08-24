@@ -1,0 +1,64 @@
+<odoo>
+<data>
+    <!-- Kế thừa layout "web.layout" -->
+    <template id="custom_frontend_layout" name="Custom Frontend Layout" inherit_id="web.frontend_layout">
+        <xpath expr="//footer" position="attributes">
+            <attribute name="t-if">request.httprequest.path != '/selectModules'</attribute>
+        </xpath>
+    </template>
+    <template id="select_apps" name="Chọn ứng dụng" >
+        <t t-call="web.login_layout">
+            <!-- Thêm thẻ link vào phần head của view -->
+            <t t-extend="web.assets_backend">
+                <t t-append="head">
+                    <link rel="stylesheet" type="text/css" href="/registry_account/static/src/css/select_apps.css"/>
+                </t>
+            </t>
+            <form action="/addDatabase" method="post" class="oe_select_apps_form">
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                <div class="oe_apps_menu container">
+                    <h3 style="font-family: 'Time New Romans', sans-serif;">CHỌN ỨNG DỤNG</h3>
+                    <div class="oe_apps_menu_content">
+                    <div class="app-card-container">
+                        
+                        <input type="radio" name="apps_1" id="checked_app_1" value="1"/> <!-- Sử dụng checkbox để chọn ứng dụng -->
+                        <label for="checked_app_1">BỘ GIẢI PHÁP CRM - QUẢN LÝ BÁN HÀNG, QUẢN LÝ KHÁCH HÀNG</label>
+                        <div class="app-list">
+                            <t t-foreach="apps_1" t-as="app">
+                                <div class="app-card">
+                                    <img t-if="app['icon']" t-att-src="app['icon']" class="app-icon"/>
+                                    <p class="app-name"><t t-out="app['name']"/></p>
+                                </div>
+                            </t>
+                        </div>
+
+
+                        
+                    </div>
+                    <div class="app-card-container">
+                        
+                        <input type="radio" name="apps_1" id="checked_app_2" value="2"/> <!-- Sử dụng checkbox để chọn ứng dụng -->
+                        <label for="checked_app_2">BỘ GIẢI PHÁP QUẢN LÝ DỰ ÁN - CÔNG VIỆC</label>
+                        <div class="app-list">
+                            <t t-foreach="apps_2" t-as="app">
+                                <div class="app-card">
+                                    <img t-if="app['icon']" t-att-src="app['icon']" class="app-icon"/>
+                                    <p class="app-name"><t t-out="app['name']"/></p>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+
+                        
+                    </div>
+                    <div class="text-center oe_login_buttons d-grid pt-36 " style="margin: 0px 50px;">
+                    <button type="submit" class="btn btn-primary">Tiếp tục</button>
+                    <a href="/web/login?" class="btn btn-link btn-sm" role="button">Đã có tài khoản?</a>
+                    </div>
+                </div>
+                
+            </form>
+        </t>
+    </template>
+    </data>
+</odoo>
